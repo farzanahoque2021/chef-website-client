@@ -24,15 +24,17 @@ const Header = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><ActiveLink to="/">Home</ActiveLink></li>
                         <li><ActiveLink to="/blog">Blog</ActiveLink></li>
+                        <li><ActiveLink to="/register">Register</ActiveLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="../../../public/cake.jpg" />
+                            <img src="/cake.jpg" />
                         </div>
                     </label>
-                    <a className="btn bg-gradient-to-r from-orange-600 to-orange-500 border-none">Login</a>
+                    <ActiveLink to="/login"><a className="btn bg-gradient-to-r from-orange-600 to-orange-500 border-none">Login</a></ActiveLink>
+
                 </div>
             </div>
         </nav>
