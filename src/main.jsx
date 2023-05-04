@@ -17,7 +17,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <HomePage></HomePage>
+        element: <HomePage></HomePage>,
+        loader: () => fetch('https://chef-website-server.vercel.app/chef')
       },
       {
         path: 'blog',
