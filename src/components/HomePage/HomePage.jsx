@@ -27,7 +27,7 @@ const HomePage = () => {
                     <h2 className='lg:text-3xl md:text-lg font-bold'>Our Expert Chefs</h2>
                     <p className='lg:text-lg md:text-base mt-4 text-slate-500'>Explore thousands of recipes with all the information you need</p>
                 </div>
-                <div className='grid md:grid-cols-1 lg:grid-cols-3 gap-4 p-12'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:px-12 my-6 place-items-center'>
                     {
                         chefs.map(chef => <ChefCard
                             key={chef.id}
