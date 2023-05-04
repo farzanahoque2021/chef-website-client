@@ -1,8 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
     const { signIn, signInGoogle } = useContext(AuthContext);
+
+    const [error, setError] = useState('');
+
 
     const handleLogin = event => {
         event.preventDefault();
@@ -14,10 +17,11 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+                setError('');
                 form.reset();
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message)
             })
     }
     const handleGoogleSignIn = () => {
@@ -25,9 +29,10 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+                setError('');
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message)
             })
     }
     return (
@@ -54,7 +59,7 @@ const Login = () => {
                                 <input type="password" placeholder="password" name="password" className="input input-bordered" required />
 
                             </div>
-
+                            <p>{error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                             </div>

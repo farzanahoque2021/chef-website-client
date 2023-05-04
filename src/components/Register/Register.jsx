@@ -1,11 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
     const { user, createUser } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const handleRegister = (event) => {
         event.preventDefault();
+        setSuccess('');
+        setError('');
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
@@ -13,14 +18,42 @@ const Register = () => {
         const photo = form.photourl.value;
         console.log(name, password, email, photo)
 
+        if (!/(?=.*[A-Z])/.test(password)) {
+            setError('Please add atleast one uppercase')
+            return;
+        }
+        else if (!/(?=.*[0-9].*[0-9])/.test(password)) {
+            setError('Please add atleast two numbers')
+            return;
+        }
+        else if (password.length < 6) {
+            setError('Please add atleast six characters in your password')
+            return;
+        }
+
         createUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                setError('');
+                setSuccess('User has been created successfully');
+                updateUserData(loggedUser, name, photo)
                 form.reset();
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message)
+            })
+    }
+    const updateUserData = (user, name, photo) => {
+        updateProfile(user, {
+            displayName: name,
+            photoURL: photo
+        })
+            .then(() => {
+                console.log('Username updated');
+            })
+            .catch(error => {
+                setError(error.message)
             })
     }
     return (
@@ -60,10 +93,12 @@ const Register = () => {
                                 <input type="url" placeholder="photourl" name="photourl" className="input input-bordered" required />
 
                             </div>
+                            <p>{error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
                             </div>
                         </form>
+                        <p>{success}</p>
 
                     </div>
                 </div>

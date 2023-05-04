@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ActiveLink from '../ActiveLink/ActiveLink';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
     return (
         <nav className='lg:px-24 px-10 mx-auto bg-neutral-100'>
             <div className="navbar">
@@ -13,6 +25,7 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to="/">Home</Link></li>
+
                             <li><Link to="/blog">Blog</Link></li>
                         </ul>
                     </div>
@@ -23,17 +36,21 @@ const Header = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><ActiveLink to="/">Home</ActiveLink></li>
+
                         <li><ActiveLink to="/blog">Blog</ActiveLink></li>
                         <li><ActiveLink to="/register">Register</ActiveLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="/cake.jpg" />
-                        </div>
-                    </label>
-                    <ActiveLink to="/login"><button className="btn bg-gradient-to-r from-orange-600 to-orange-500 border-none">Login</button></ActiveLink>
+                    {
+                        user ? <div className='flex'><label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img src={user.photoURL} />
+                            </div>
+                        </label><button onClick={handleLogOut} className="btn bg-gradient-to-r from-orange-600 to-orange-500 border-none">Log out</button></div> : <ActiveLink to="/login"><button className="btn bg-gradient-to-r from-orange-600 to-orange-500 border-none">Login</button></ActiveLink>
+                    }
+
+
 
                 </div>
             </div>

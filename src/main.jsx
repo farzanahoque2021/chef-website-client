@@ -13,6 +13,7 @@ import ChefDetails from './components/ChefDetails/ChefDetails'
 import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import AuthProvider from './providers/AuthProvider';
+import PrivateRoute from './routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/chef/:id',
-        element: <ChefDetails></ChefDetails>,
+        element: <PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`https://chef-website-server-farzanahoque2021.vercel.app/chef/${params.id}`)
       },
       {
