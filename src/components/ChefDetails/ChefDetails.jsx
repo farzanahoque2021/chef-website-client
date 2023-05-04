@@ -19,6 +19,14 @@ const ChefDetails = () => {
                     <img className='w-64 h-64' src={chef_photo} alt="" />
                 </div>
             </div >
+            <div>
+                <h2 className='lg:text-2xl md:text-xl font-bold text-center mb-5'>Here are some recipes</h2>
+                {
+                    recipes.map(recipe => <ChefRecipes
+                        recipe={recipe}></ChefRecipes>)
+                }
+            </div>
+
         </div >
     );
 };
