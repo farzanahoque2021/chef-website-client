@@ -33,7 +33,7 @@ const Header = () => {
                             <img src="/cake.jpg" />
                         </div>
                     </label>
-                    <ActiveLink to="/login"><a className="btn bg-gradient-to-r from-orange-600 to-orange-500 border-none">Login</a></ActiveLink>
+                    <ActiveLink to="/login"><button className="btn bg-gradient-to-r from-orange-600 to-orange-500 border-none">Login</button></ActiveLink>
 
                 </div>
             </div>
