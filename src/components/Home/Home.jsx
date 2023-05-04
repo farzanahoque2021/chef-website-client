@@ -10,7 +10,7 @@ const Home = () => {
         <div>
             <Header></Header>
             <Outlet></Outlet>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
             <ToastContainer></ToastContainer>
         </div>
     );

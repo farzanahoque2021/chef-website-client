@@ -15,6 +15,7 @@ import Register from './components/Register/Register'
 import AuthProvider from './providers/AuthProvider';
 import PrivateRoute from './routes/PrivateRoute';
 
+
 const router = createBrowserRouter([
   {
     path: '/',
