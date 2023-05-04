@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
     const { id, chef_name, chef_photo, experience, likes, number_of_recipes } = chef;
@@ -18,7 +19,8 @@ const ChefCard = ({ chef }) => {
 
                 </div>
                 <p className='font-semibold text-center'>Number of Recipes: {number_of_recipes}</p>
-                <button className="btn btn-outline btn-info">View Recipes </button>
+                <div className='text-center'><Link to={`chef/${id}`}><button className="btn btn-outline btn-info">View Recipes </button></Link></div>
+
 
             </div>
 
