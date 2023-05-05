@@ -5,7 +5,7 @@ import CategoryRecipe from '../CategoryRecipe/CategoryRecipe';
 
 const SelectedCategory = () => {
     const selectedCategory = useLoaderData();
-    // const { recipes } = selectedCategory;
+
 
     return (
         <div>

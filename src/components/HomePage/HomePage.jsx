@@ -31,7 +31,7 @@ const HomePage = () => {
 
             </div >
             <div>
-                <div className='text-center my-8'>
+                <div className='text-center my-10'>
                     <h2 className='lg:text-3xl md:text-lg font-bold'>Our Expert Chefs</h2>
                     <p className='lg:text-lg md:text-base mt-4 text-slate-500'>Explore thousands of recipes with all the information you need</p>
                 </div>
@@ -43,12 +43,13 @@ const HomePage = () => {
                     }
                 </div>
             </div>
-            <div>
-                <div className='text-center my-8'>
+            <div className='border p-10 mb-4 bg-neutral-50'>
+
+                <div className='text-center my-2 '>
                     <h2 className='lg:text-3xl md:text-lg font-bold'>Food Category</h2>
                     <p className='lg:text-lg md:text-base mt-4 text-slate-500'>Here is our category list</p>
                 </div>
-                <div className='grid md:grid-cols-1 lg:grid-cols-4 place-items-center border p-10 mb-4 bg-neutral-50'>
+                <div className='grid md:grid-cols-1 lg:grid-cols-4 place-items-center '>
                     {
                         categories.map(category => <SingleCategory
                             key={category.id}
@@ -56,6 +57,19 @@ const HomePage = () => {
                     }
                 </div>
 
+            </div>
+            <div className='grid lg:grid-cols-3 md:grid-cols-1 border w-1/2 mx-auto my-6 rounded'>
+                <div><img src="cake.jpg"></img></div>
+
+                <div className='flex flex-col justify-center items-center'><h2 className='lg:text-lg md:text-base font-semibold text-orange-500'>Healthy foods</h2>
+                    <p className='lg:text-lg md:text-base my-4 text-slate-500 text-center'>You can try some of our recipes. Hopefully making this recipes will also give u joy </p></div>
+                <div><img src="pancake.jpg"></img></div>
+                <div className='flex flex-col justify-center items-center'><h2 className='lg:text-lg md:text-base font-semibold text-orange-500'>Home Cooks</h2>
+                    <p className='lg:text-lg md:text-base my-4 text-slate-500 text-center'>You can try our dessert or snacks recipes which are quite easy to make </p></div>
+
+                <div><img src="kebab.jpg"></img></div>
+                <div className='flex flex-col justify-center items-center'><h2 className='lg:text-lg md:text-base font-semibold text-orange-500'>Easy Recipes</h2>
+                    <p className='lg:text-lg md:text-base my-4 text-slate-500 text-center'>Now you can also enjoy some delicious recipes also with fun and easy way </p></div>
             </div>
         </div >
     );
