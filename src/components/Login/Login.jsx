@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { signIn, signInGoogle } = useContext(AuthContext);
@@ -67,11 +67,15 @@ const Login = () => {
                                 <input type="password" placeholder="password" name="password" className="input input-bordered" required />
 
                             </div>
-                            <p>{error}</p>
+                            <p className='mb-4 text-red-600'>{error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                             </div>
+
                         </form>
+                        <p className='mb-4 ml-8'>
+                            <Link to="/register" className='label-text-alt link link-hover text-blue-400'>New to Chef Heaven? Please Register</Link>
+                        </p>
                         <div className='flex flex-col p-4'><button onClick={handleGoogleSignIn} className="btn btn-outline btn-info mb-4">Sign in with google</button>
                             <button className="btn btn-outline btn-info mb-4">Sign in with github</button></div>
 

@@ -1,11 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from "firebase/auth";
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const { user, createUser } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+
+    const navigate = useNavigate();
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -16,7 +19,7 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photourl.value;
-        console.log(name, password, email, photo)
+        // console.log(name, password, email, photo)
 
         if (!/(?=.*[A-Z])/.test(password)) {
             setError('Please add atleast one uppercase')
@@ -34,9 +37,10 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                // console.log(loggedUser);
                 setError('');
-                setSuccess('User has been created successfully');
+                setSuccess('User account has been created successfully');
+                navigate('/');
                 updateUserData(loggedUser, name, photo)
                 form.reset();
             })
@@ -93,12 +97,15 @@ const Register = () => {
                                 <input type="url" placeholder="photourl" name="photourl" className="input input-bordered" required />
 
                             </div>
-                            <p>{error}</p>
+                            <p className='mb-4 text-red-600'>{error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
                             </div>
                         </form>
-                        <p>{success}</p>
+                        <p className='mb-4 ml-8'>
+                            <Link to="/login" className='label-text-alt link link-hover text-blue-400'>Already have an account? Please Login</Link>
+                        </p>
+                        <p className='mb-4 ml-8 text-green-600'>{success}</p>
 
                     </div>
                 </div>

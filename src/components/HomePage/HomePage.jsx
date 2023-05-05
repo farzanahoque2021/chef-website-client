@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'lottie-react'
 import food from '../../assets/healthy-food.json'
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ChefCard from '../ChefCard/ChefCard';
 
 const HomePage = () => {
@@ -13,7 +13,7 @@ const HomePage = () => {
                 <div className='text-start'>
                     <h1 className='lg:text-6xl md:text-3xl font-medium'>Choose From <br></br><span className='lg:text-6xl md:text-2xl font-medium text-orange-600'>Delish Recipes</span></h1>
                     <p className='lg:text-lg md:text-sm my-2 text-slate-500'>Join us to become a cooking expert in <br /> Indian cuisine with a fun way to learn</p>
-                    <button className="btn bg-gradient-to-r from-orange-600 to-orange-500 border-none">Explore More</button>
+                    <Link to="/register"><button className="btn bg-gradient-to-r from-orange-600 to-orange-500 border-none">Explore More</button></Link>
                 </div>
                 <div>
                     <div className='w-96'>
