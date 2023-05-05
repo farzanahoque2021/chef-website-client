@@ -6,7 +6,7 @@ import ChefCard from '../ChefCard/ChefCard';
 
 const HomePage = () => {
     const chefs = useLoaderData();
-    console.log(chefs);
+
     return (
         <div>
             <div className='lg:flex justify-center items-center  p-10 mb-6 bg-neutral-100'>

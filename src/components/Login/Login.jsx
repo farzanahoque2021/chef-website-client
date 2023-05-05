@@ -3,7 +3,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const { signIn, signInGoogle } = useContext(AuthContext);
+    const { signIn, signInGoogle, signInGithub } = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
@@ -43,6 +43,16 @@ const Login = () => {
                 setError(error.message)
             })
     }
+    const handleGithubSignIn = () => {
+        signInGithub()
+            .then(result => {
+                const loggedUser = result.user;
+                setError('')
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+    }
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -77,7 +87,7 @@ const Login = () => {
                             <Link to="/register" className='label-text-alt link link-hover text-blue-400'>New to Chef Heaven? Please Register</Link>
                         </p>
                         <div className='flex flex-col p-4'><button onClick={handleGoogleSignIn} className="btn btn-outline btn-info mb-4">Sign in with google</button>
-                            <button className="btn btn-outline btn-info mb-4">Sign in with github</button></div>
+                            <button onClick={handleGithubSignIn} className="btn btn-outline btn-info mb-4">Sign in with github</button></div>
 
                     </div>
                 </div>
