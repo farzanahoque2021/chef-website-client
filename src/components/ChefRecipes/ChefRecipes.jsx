@@ -10,10 +10,10 @@ const ChefRecipes = ({ recipe }) => {
 
     }
     return (
-        <div className='grid grid-cols-1 border w-1/2 mx-auto gap-4 mb-4 p-4'>
+        <div className='grid grid-cols-1 border w-1/2 mx-auto gap-4 mb-4 p-4 shadow-xl'>
             <div>
                 <div>
-                    <img className='w-full h-80' src={picture} alt="" />
+                    <img className='w-full h-80 object-cover' src={picture} alt="" />
                     <div><p className='lg:text-xl md:text-xl font-bold'>Recipe name: {name}</p>
                         <p className='lg:text-xl md:text-base font-semibold text-slate-400 mt-2'>Rating: {rating}</p>
                         <p className='ms-3 lg:text-xl md:text-sm text-emerald-800'>Ingredients Needed:</p>

@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Lottie from 'lottie-react'
 import food from '../../assets/healthy-food.json'
 import { Link, useLoaderData } from 'react-router-dom';
 import ChefCard from '../ChefCard/ChefCard';
+import SingleCategory from '../SingleCategory/SingleCategory';
 
 const HomePage = () => {
     const chefs = useLoaderData();
+
+    const [categories, setCategories] = useState([]);
+    useEffect(() => {
+        fetch('https://chef-website-server-farzanahoque2021.vercel.app/category')
+            .then(res => res.json())
+            .then(data => setCategories(data))
+    }, [])
 
     return (
         <div>
@@ -34,6 +42,20 @@ const HomePage = () => {
                             chef={chef}></ChefCard>)
                     }
                 </div>
+            </div>
+            <div>
+                <div className='text-center my-8'>
+                    <h2 className='lg:text-3xl md:text-lg font-bold'>Food Category</h2>
+                    <p className='lg:text-lg md:text-base mt-4 text-slate-500'>Here is our category list</p>
+                </div>
+                <div className='grid md:grid-cols-1 lg:grid-cols-4 place-items-center border p-10 mb-4 bg-neutral-50'>
+                    {
+                        categories.map(category => <SingleCategory
+                            key={category.id}
+                            category={category}></SingleCategory>)
+                    }
+                </div>
+
             </div>
         </div >
     );
